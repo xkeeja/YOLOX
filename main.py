@@ -24,7 +24,7 @@ else:
 model.eval()
 
 
-ckpt = torch.load(f"models/{yolo_model.replace('-','_')}.pth", map_location="cpu")
+ckpt = torch.load(f"/mnt/data/YOLOX/models/{yolo_model.replace('-','_')}.pth", map_location="cpu")
 model.load_state_dict(ckpt["model"])
 
 predictor = Predictor(
@@ -34,7 +34,7 @@ predictor = Predictor(
 )
 
 
-file_name = os.path.join(exp.output_dir, yolo_model)
+file_name = os.path.join('/mnt/data/YOLOX/output', yolo_model)
 os.makedirs(file_name, exist_ok=True)
 
 vis_folder = os.path.join(file_name, "vis_res")
@@ -44,17 +44,17 @@ current_time = time.localtime()
 
 
 images = [
-    'data/4_0120.jpg',
-    'data/4_0239.jpg',
-    'data/4_0343.jpg',
-    'data/5_0115.jpg',
-    'data/5_0207.jpg',
-    'data/5_0304.jpg',
-    'data/5_0433.jpg',
-    'data/6_0203.jpg',
-    'data/6_0231.jpg',
-    'data/6_0258.jpg',
-    'data/6_0401.jpg',
+    '/mnt/data/YOLOX/input/4_0120.jpg',
+    '/mnt/data/YOLOX/input/4_0239.jpg',
+    '/mnt/data/YOLOX/input/4_0343.jpg',
+    '/mnt/data/YOLOX/input/5_0115.jpg',
+    '/mnt/data/YOLOX/input/5_0207.jpg',
+    '/mnt/data/YOLOX/input/5_0304.jpg',
+    '/mnt/data/YOLOX/input/5_0433.jpg',
+    '/mnt/data/YOLOX/input/6_0203.jpg',
+    '/mnt/data/YOLOX/input/6_0231.jpg',
+    '/mnt/data/YOLOX/input/6_0258.jpg',
+    '/mnt/data/YOLOX/input/6_0401.jpg',
 ]
 
 for image in images:
