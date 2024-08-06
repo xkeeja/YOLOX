@@ -7,16 +7,16 @@ from yolox.exp import Exp as MyExp
 class Exp(MyExp):
     def __init__(self):
         super(Exp, self).__init__()
-        self.num_classes = 1 # must match ./yolox/data/datasets/coco_classes.py file
+        self.num_classes = 2 # must match ./yolox/data/datasets/coco_classes.py file
         self.depth = 0.33
         self.width = 0.50
         self.warmup_epochs = 1
-        # self.max_epoch = 600
+        self.max_epoch = 2000
         
-        self.data_dir = "./datasets/one_class" # data directory here
+        self.data_dir = "./datasets/char_sequences" # data directory here
         self.train_ann = "train.json"
         self.val_ann = "valid.json"
-        # self.test_ann = "test.json" # not used; can ignore if want
+        self.test_ann = "test.json" # not used; can ignore if want
 
         # ---------- transform config ------------ #
         self.mosaic_prob = 1.0
@@ -25,7 +25,7 @@ class Exp(MyExp):
         self.flip_prob = 0.5
 
         self.exp_name = os.path.split(os.path.realpath(__file__))[1].split(".")[0]
-        self.output_dir = '/mnt/data/nissay/task-2/models/yolox' # update output base directory; a new training folder will be created here
+        self.output_dir = '/mnt/data/nissay/task-2/models/char_sequences_cold_start' # update output base directory; a new training folder will be created here
 
     def get_dataset(self, cache: bool, cache_type: str = "ram"):
         from yolox.data import COCODataset, TrainTransform

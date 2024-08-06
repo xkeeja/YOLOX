@@ -3,7 +3,7 @@
 # Copyright (c) Megvii, Inc. and its affiliates.
 
 COCO_CLASSES = (
-    # "katsuji",
+    "katsuji",
     "tegaki",
     
     
