@@ -8,24 +8,22 @@ class Exp(MyExp):
     def __init__(self):
         super(Exp, self).__init__()
         self.num_classes = 1 # must match ./yolox/data/datasets/coco_classes.py file
-        self.depth = 0.33
-        self.width = 0.50
+        self.depth = 0.67
+        self.width = 0.75
         self.warmup_epochs = 1
-        self.max_epoch = 500
+        self.max_epoch = 1000
         
+        self.print_interval = 1
+        self.eval_interval = 1
+        self.save_history_ckpt = False
+         
         self.data_dir = "./datasets/glove" # data directory here
         self.train_ann = "train.json"
         self.val_ann = "valid.json"
         self.test_ann = "test.json" # not used; can ignore if want
 
-        # ---------- transform config ------------ #
-        self.mosaic_prob = 1.0
-        self.mixup_prob = 1.0
-        self.hsv_prob = 1.0
-        self.flip_prob = 0.5
-
         self.exp_name = os.path.split(os.path.realpath(__file__))[1].split(".")[0]
-        self.output_dir = '/mnt/data/glove/models' # update output base directory; a new training folder will be created here
+        self.output_dir = '/mnt/data/glove/models/v2' # update output base directory; a new training folder will be created here
 
     def get_dataset(self, cache: bool, cache_type: str = "ram"):
         from yolox.data import COCODataset, TrainTransform
